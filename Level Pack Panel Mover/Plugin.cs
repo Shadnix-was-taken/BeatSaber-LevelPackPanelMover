@@ -1,6 +1,9 @@
 ﻿using IPA;
 using IPA.Config;
 using IPA.Utilities;
+using System;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using IPALogger = IPA.Logging.Logger;
 
@@ -8,30 +11,20 @@ namespace Level_Pack_Panel_Mover
 {
     public class Plugin : IBeatSaberPlugin
     {
-        internal static Ref<PluginConfig> config;
-        internal static IConfigProvider configProvider;
 
-        public void Init(IPALogger logger, [Config.Prefer("json")] IConfigProvider cfgProvider)
+        public void Init(object thisWillBeNull, IPALogger logger)
         {
             Logger.log = logger;
-            configProvider = cfgProvider;
-
-            config = cfgProvider.MakeLink<PluginConfig>((p, v) =>
-            {
-                if (v.Value == null || v.Value.RegenerateConfig)
-                    p.Store(v.Value = new PluginConfig() { RegenerateConfig = false });
-                config = v;
-            });
         }
 
         public void OnApplicationStart()
         {
-            Logger.log.Debug("OnApplicationStart");
+
         }
 
         public void OnApplicationQuit()
         {
-            Logger.log.Debug("OnApplicationQuit");
+
         }
 
         public void OnFixedUpdate()
@@ -51,6 +44,24 @@ namespace Level_Pack_Panel_Mover
 
         public void OnSceneLoaded(Scene scene, LoadSceneMode sceneMode)
         {
+            // Check what scenes get loaded...
+            if (scene.name == "MenuCore")
+            {
+                Logger.log.Info("MenuCore loaded...");
+
+                GameObject menuCoreWrapper = scene.GetRootGameObjects().First();
+                var bottomScreen = menuCoreWrapper.transform.Find("ScreenSystem")?.transform.Find("BottomScreen");
+
+                if (bottomScreen == null)
+                {
+                    Logger.log.Error("Couldn't find BottomScreen in ScreenSystem - maybe the game structure changed?");
+                    return;
+                }
+
+
+                bottomScreen.Translate(0f, -0.4f, 0.1f);
+
+            }
 
         }
 
