@@ -14,3 +14,7 @@ Drop the DLL file into your plugins folder.
 ## Removal
 
 Delete the DLL file from your plugins folder.
+
+
+## Example
+![Screenshot showing the panel position without and with the mod installed](media/example.png)
