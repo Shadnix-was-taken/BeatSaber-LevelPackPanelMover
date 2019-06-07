@@ -40,6 +40,10 @@
       <HintPath>$(GameDirPath)Beat Saber_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="BeatSaberCustomUI">
+      <HintPath>C:\Spiele\Steam\steamapps\common\Beat Saber\Plugins\BeatSaberCustomUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="BS_Utils">
       <HintPath>C:\Spiele\Steam\steamapps\common\Beat Saber\Plugins\BS_Utils.dll</HintPath>
       <Private>False</Private>
@@ -68,7 +72,8 @@
     <Compile Include="Plugin.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs" />
+    <Compile Include="ModConfig.cs" />
+    <Compile Include="UI\ModUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="manifest.json" />
