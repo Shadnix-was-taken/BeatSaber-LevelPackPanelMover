@@ -12,7 +12,7 @@ namespace Level_Pack_Panel_Mover
     public class Plugin : IBeatSaberPlugin
     {
         public const string Name = "Level Pack Panel Mover";
-        public const string Version = "0.1.0";
+        public const string Version = "0.2.0";
 
         public void Init(object thisWillBeNull, IPALogger logger)
         {
@@ -50,6 +50,7 @@ namespace Level_Pack_Panel_Mover
             if (scene.name == "MenuCore")
             {
                 Logger.log.Info("MenuCore loaded...");
+                Settings.Load();
 
                 GameObject menuCoreWrapper = scene.GetRootGameObjects().First();
                 var bottomScreen = menuCoreWrapper.transform.Find("ScreenSystem")?.transform.Find("BottomScreen");
@@ -60,9 +61,8 @@ namespace Level_Pack_Panel_Mover
                     return;
                 }
 
-
-                bottomScreen.Translate(0f, -0.4f, 0.1f);
-
+                bottomScreen.Translate(Settings.bottomPanelPosition);
+                bottomScreen.Rotate(Settings.bottomPanelRotation.eulerAngles);
             }
 
         }
