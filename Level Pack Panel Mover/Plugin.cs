@@ -1,7 +1,5 @@
-﻿using IPA;
-using IPA.Config;
-using IPA.Utilities;
-using System;
+﻿using BeatSaberMarkupLanguage.Settings;
+using IPA;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -42,7 +40,10 @@ namespace Level_Pack_Panel_Mover
 
         public void OnActiveSceneChanged(Scene prevScene, Scene nextScene)
         {
-
+            if (nextScene.name == "MenuViewControllers")
+            {
+                BSMLSettings.instance.AddSettingsMenu("Bottom Panel Mover", "Level_Pack_Panel_Mover.UI.Settings.bsml", UI.Settings.instance);
+            }
         }
 
         public void OnSceneLoaded(Scene scene, LoadSceneMode sceneMode)
@@ -53,7 +54,6 @@ namespace Level_Pack_Panel_Mover
                 Logger.log.Info("MenuCore loaded...");
 
                 ModConfig.Load();
-                //UI.ModUI.CreateSettingsOptionsUI();
 
                 GameObject menuCoreWrapper = scene.GetRootGameObjects().First();
                 var bottomScreen = menuCoreWrapper.transform.Find("ScreenSystem")?.transform.Find("BottomScreen");

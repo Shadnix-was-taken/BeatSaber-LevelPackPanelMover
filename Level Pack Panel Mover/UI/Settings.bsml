@@ -1,0 +1,16 @@
+﻿<settings-container>
+  <horizontal>
+    <text text='Offset of default position. All values in cm.' hover-hint='Set all values to 0 to put the panel back to the default position.' />
+  </horizontal>
+  <slider-setting text='Left/Right (X-Axis)' value='panel-position-x'
+                  integer-only='true' min='-1000' max='1000' increment='10' />
+  <slider-setting text='Up/Down (Y-Axis)' value='panel-position-y'
+                  integer-only='true' min='-1000' max='1000' increment='10' />
+  <slider-setting text='Front/Back (Z-Axis)' value='panel-position-z'
+                  integer-only='true' min='-1000' max='1000' increment='10' />
+  <horizontal>
+    <text text='Set rotation to/from main platform in degrees.' />
+  </horizontal>
+  <slider-setting text='X-Axis' value='panel-rotation-x'
+                  integer-only='true' min='-360' max='360' increment='5' />
+</settings-container>
