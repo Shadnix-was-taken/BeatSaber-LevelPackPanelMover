@@ -10,7 +10,7 @@ namespace Level_Pack_Panel_Mover
     public class Plugin : IBeatSaberPlugin
     {
         public const string Name = "Level Pack Panel Mover";
-        public const string Version = "1.5.0";
+        public const string Version = "1.6.0";
 
         public void Init(object thisWillBeNull, IPALogger logger)
         {

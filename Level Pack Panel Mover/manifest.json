@@ -2,10 +2,10 @@
   "$schema": "https://raw.githubusercontent.com/nike4613/ModSaber-MetadataFileSchema/master/Schema.json",
   "author": "Shadnix",
   "description": "Moves the level pack panel wherever you want.",
-  "gameVersion": "1.6.0",
+  "gameVersion": "1.6.1",
   "id": "Level Pack Panel Mover",
   "name": "Level Pack Panel Mover",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "dependsOn": {
     "BSIPA": "^3.13.4",
     "BeatSaberMarkupLanguage": "^1.1.0",
