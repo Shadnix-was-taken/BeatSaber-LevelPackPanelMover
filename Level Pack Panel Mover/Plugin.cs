@@ -7,40 +7,35 @@ using IPALogger = IPA.Logging.Logger;
 
 namespace Level_Pack_Panel_Mover
 {
-    public class Plugin : IBeatSaberPlugin
+    [Plugin(RuntimeOptions.SingleStartInit)]
+    public class Plugin
     {
         public const string Name = "Level Pack Panel Mover";
-        public const string Version = "1.6.0";
+        public const string Version = "1.7.0";
 
+        [Init]
         public void Init(object thisWillBeNull, IPALogger logger)
         {
             Logger.log = logger;
         }
 
-        public void OnApplicationStart()
+        [OnStart]
+        public void OnStart()
         {
-
+            AddEvents();
         }
 
-        public void OnApplicationQuit()
+        [OnExit]
+        public void OnExit()
         {
             // Save settings
             ModConfig.Save();
-        }
-
-        public void OnFixedUpdate()
-        {
-
-        }
-
-        public void OnUpdate()
-        {
-
+            RemoveEvents();
         }
 
         public void OnActiveSceneChanged(Scene prevScene, Scene nextScene)
         {
-            if (nextScene.name == "MenuViewControllers")
+            if (nextScene.name == "MenuViewControllers" && prevScene.name == "EmptyTransition")
             {
                 BSMLSettings.instance.AddSettingsMenu("Bottom Panel Mover", "Level_Pack_Panel_Mover.UI.Settings.bsml", UI.Settings.instance);
             }
@@ -70,9 +65,18 @@ namespace Level_Pack_Panel_Mover
 
         }
 
-        public void OnSceneUnloaded(Scene scene)
+        private void AddEvents()
         {
-
+            RemoveEvents();
+            SceneManager.activeSceneChanged += OnActiveSceneChanged;
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
+
+        private void RemoveEvents()
+        {
+            SceneManager.activeSceneChanged -= OnActiveSceneChanged;
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
     }
 }
