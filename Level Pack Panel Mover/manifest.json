@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/beat-saber-modding-group/BSIPA-MetadataFileSchema/master/Schema.json",
   "author": "Shadnix",
   "description": "Moves the level pack panel wherever you want.",
-  "gameVersion": "1.11.0",
+  "gameVersion": "1.11.1",
   "id": "Level Pack Panel Mover",
   "name": "Level Pack Panel Mover",
   "version": "1.9.0",
