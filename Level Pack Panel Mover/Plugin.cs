@@ -11,7 +11,7 @@ namespace Level_Pack_Panel_Mover
     public class Plugin
     {
         public const string Name = "Level Pack Panel Mover";
-        public const string Version = "1.8.0";
+        public const string Version = "1.9.0";
 
         [Init]
         public void Init(object thisWillBeNull, IPALogger logger)
